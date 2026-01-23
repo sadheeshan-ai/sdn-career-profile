@@ -13,4 +13,16 @@
   }
   const y=document.getElementById('year');
   if(y) y.textContent=new Date().getFullYear();
+
+  // Smooth scroll for in-page anchors (e.g., Back to top)
+  document.querySelectorAll('a[href^="#"]').forEach(link=>{
+    link.addEventListener('click', (e)=>{
+      const href = link.getAttribute('href');
+      if(!href || href === '#') return;
+      const target = document.querySelector(href);
+      if(!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
 })();
